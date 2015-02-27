@@ -1,3 +1,3 @@
 class VideoSerializer < ActiveModel::Serializer
-  attributes :id, :author, :title, :link, :uid
+  attributes :id, :title, :description, :thumbnail, :videoId
 end
