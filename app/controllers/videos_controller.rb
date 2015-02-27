@@ -1,31 +1,31 @@
-class PlaylistsController < ApplicationController
+class VideosController < ApplicationController
 
   def index
-    playlists = Playlist.all
-    render json: playlists
+    videos = Video.all
+    render json: videos
   end
 
   def create
-    playlist = Playlist.new(playlist_params)
-    if playlist.save
-      render json: playlist
+    video = Video.new(video_params)
+    if video.save
+      render json: video
     end
   end
 
   def destroy
-    playlist = Playlist.find(params[:id])
-    playlist.destroy
+    video = Video.find(params[:id])
+    video.destroy
     head :no_content
   end
 
   def update
-    playlist = Playlist.find(params[:id])
-    playlist.update(playlist_params)
-    render json: playlist
+    video = Video.find(params[:id])
+    video.update(video_params)
+    render json: video
   end
 
   private
-  def playlist_params
-    params.require(:playlist).permit(:name)
+  def video_params
+    params.require(:video).permit(:title, :description, :thumbnail, :videoId)
   end
 end
